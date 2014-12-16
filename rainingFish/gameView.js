@@ -7,8 +7,8 @@ Fishing.GameView = function(game, ctx) {
 
 Fishing.GameView.prototype.start = function () {
   var gameView = this;
-  var cat = this.game.cat;
-  gameView.bindKeyHandlers(cat);
+  // var cat = this.game.cat;
+  // gameView.bindKeyHandlers(cat);
   setInterval(function(){
     gameView.game.addFish();
     gameView.game.step();

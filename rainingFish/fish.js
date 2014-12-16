@@ -1,18 +1,17 @@
 var Fishing = window.Fishing || {};
 
 Fishing.Fish = function (pos, game) {
-	var img = new Image();
-	img.src = "https://s3-us-west-1.amazonaws.com/rainingfish/goldfish.png"
+	var image = new Image();
+	image.src = "https://s3-us-west-1.amazonaws.com/rainingfish/goldfish-transp-50px.png";
   Fishing.MovingObject.call(this, { pos: pos,
-                                    vel: Fishing.Util.randomVec(3),
-																		radius: Fishing.Fish.RADIUS0,
-                                    img: img,
+                                    vel: Fishing.Util.randomVec(5),
+                                    img: image,
                                     game: game })
 };
 
 Fishing.Util.inherits(Fishing.Fish, Fishing.MovingObject);
 
-Fishing.Fish.RADIUS = 5;
+// Fishing.Fish.RADIUS = 5;
 
 Fishing.Fish.prototype.collideWith = function (otherObject) {
   if (otherObject instanceof Fishing.Ship) {

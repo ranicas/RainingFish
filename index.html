@@ -7,7 +7,7 @@
     <script src="./rainingFish/fish.js"></script>
     <script src="./rainingFish/cat.js"></script>
     <script src="./rainingFish/gameView.js"></script>
-		<link rel="stylesheet" type="text/css" href="./asteroids.css">
+		<link rel="stylesheet" type="text/css" href="./rainingFish.css">
   </head>
   <body>
     <canvas id="game-canvas"></canvas>
@@ -20,7 +20,7 @@
       var ctx = canvasEl.getContext('2d');
       var game = new window.Fishing.Game();
       var view = new window.Fishing.GameView(game, ctx);
-      view.start();
+			setTimeout(view.start, 0);
     </script>
   </body>
 </html>
