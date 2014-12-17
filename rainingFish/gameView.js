@@ -10,7 +10,7 @@ Fishing.GameView.prototype.start = function () {
   // var cat = this.game.cat;
   // gameView.bindKeyHandlers(cat);
   setInterval(function(){
-    gameView.game.addFish();
+    gameView.game.addFish(10);
     gameView.game.step();
     gameView.game.draw(gameView.ctx);
   }, 20);

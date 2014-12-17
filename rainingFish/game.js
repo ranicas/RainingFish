@@ -8,12 +8,15 @@ Fishing.Game.DIM_X = window.innerWidth;
 
 Fishing.Game.DIM_Y = window.innerHeight;
 
-Fishing.Game.NUM_FISH = 10;
+// Fishing.Game.NUM_FISH = 50;
 
-Fishing.Game.prototype.addFish = function () {
-  for(var i = this.fish.length; i < Fishing.Game.NUM_FISH; i++) {
-    this.fish.push(new Fishing.Fish(Fishing.Game.randomPosition(), this));
-  }
+Fishing.Game.NUM_DROP_FISH = 1
+
+Fishing.Game.prototype.addFish = function (spacer) {
+	//add fish random iterations
+	if (Math.floor(Math.random() * spacer) === 1 ) {
+	  this.fish.push(new Fishing.Fish(Fishing.Game.randomPosition(), this));
+	}   
 };
 
 Fishing.Game.prototype.allObjects = function () {
@@ -33,10 +36,8 @@ Fishing.Game.prototype.moveObjects = function() {
 
 //TODO define out of bound to include object so not to disappear
 Fishing.Game.prototype.isOutOfBounds = function (pos) {
-  if (pos[0] < 0 || pos[0] > Fishing.Game.DIM_Y) {
-    return true;
-  }
-  if (pos[1] < 0 || pos[1] > Fishing.Game.DIM_X) {
+	//only care if y value is above dimY
+  if (pos[1] > Fishing.Game.DIM_Y) {
     return true;
   }
   return false;
@@ -50,7 +51,7 @@ Fishing.Game.prototype.remove = function (obj) {
   if (obj instanceof Fishing.Fish) {
     var index = this.fish.indexOf(obj);
     this.fish.splice(index, 1);
-		// obj.remove();
+		delete(obj)
   } 
 }
 

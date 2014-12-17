@@ -10,12 +10,12 @@ Fishing.Util.inherits = function (subClass, superClass) {
 
 Fishing.Util.randomVec = function (length) {
 	//only move in y direction
-  return [0, Math.ceil(Math.random() * length)];
+  return [0, Math.random() * length + 1];
 };
 
 Fishing.Util.randomStartPos = function(length) {
 	//start at very top
-	return [Math.floor(Math.random() * length), 0];
+	return [Math.floor(Math.random() * length), -50];
 }
 Fishing.Util.randomColor = function () {
   return '#' + (Math.floor(Math.random() * 16777215)).toString(16);

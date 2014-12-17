@@ -14,12 +14,12 @@ Fishing.MovingObject.prototype.draw = function (ctx) {
 
 Fishing.MovingObject.prototype.move = function () {
   newPos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
-	console.log(this.pos[0] + " " + this.vel[0] + ", " + this.pos[1] + " " + this.vel[1])
-  // if (this.game.isOutOfBounds(newPos)) {
-  //     this.game.remove(this);
-  // } else {
+	// console.log(this.pos[0] + " " + this.vel[0] + ", " + this.pos[1] + " " + this.vel[1])
+  if (this.game.isOutOfBounds(newPos)) {
+      this.game.remove(this);
+  } else {
     this.pos = newPos
-  // }
+  }
 };
 
 //TODO redefine this to be more precise
