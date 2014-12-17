@@ -17,6 +17,6 @@ Fishing.GameView.prototype.start = function () {
 };
 
 Fishing.GameView.prototype.bindKeyHandlers = function (cat) {
-  window.key('left, a', function() { cat.power([-1, 0]); });
-  window.key('right, d',function() { cat.power([1, 0]); });
+  window.key('left, a', function() { cat.power([-1, 0], true); });
+  window.key('right, d',function() { cat.power([1, 0], false); });
 }

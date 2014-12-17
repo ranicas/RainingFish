@@ -14,7 +14,7 @@ Fishing.Cat.WIDTH = 172;
 
 Fishing.Util.inherits(Fishing.Cat, Fishing.MovingObject);
 
-Fishing.Cat.prototype.power = function(impulse) {
+Fishing.Cat.prototype.power = function(impulse, left) {
 	//disable move left or right if at edge
 	if ((this.pos[0] + this.vel[0]) < 0) {
 		this.vel[0] = 0;
@@ -24,7 +24,12 @@ Fishing.Cat.prototype.power = function(impulse) {
 	  this.vel[0] += impulse[0];
 	  this.vel[1] += impulse[1];
 	}
-	console.log(this.vel[0])
+	
+	if (left) {
+		this.img.src = "https://s3-us-west-1.amazonaws.com/rainingfish/cat_with_bowl300px.gif"
+	} else {
+		this.img.src = "https://s3-us-west-1.amazonaws.com/rainingfish/cat_with_bowl300pxRT.gif"
+	}
 };
 
 //need this?
