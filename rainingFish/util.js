@@ -13,10 +13,11 @@ Fishing.Util.randomVec = function (length) {
   return [0, Math.random() * length + 1];
 };
 
-Fishing.Util.randomStartPos = function(length) {
-	//start at very top
-	return [Math.floor(Math.random() * length), -50];
-}
+// Fishing.Util.randomStartPos = function() {
+// 	//start at very top
+// 	return [Math.floor(Math.random() * Fishing.Game.RIGHT_BD) + Fishing.Game.LEFT_BD, -50];
+// };
+
 Fishing.Util.randomColor = function () {
   return '#' + (Math.floor(Math.random() * 16777215)).toString(16);
 };

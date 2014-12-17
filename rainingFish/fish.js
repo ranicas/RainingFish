@@ -3,7 +3,8 @@ var Fishing = window.Fishing || {};
 Fishing.Fish = function (pos, game) {
 	var image = new Image();
 	image.src = "https://s3-us-west-1.amazonaws.com/rainingfish/goldfish-transp-50px.png";
-  Fishing.MovingObject.call(this, { pos: pos,
+  // image.height = "100px"
+	Fishing.MovingObject.call(this, { pos: pos,
                                     vel: Fishing.Util.randomVec(5),
                                     img: image,
                                     game: game })

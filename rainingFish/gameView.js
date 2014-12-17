@@ -7,8 +7,8 @@ Fishing.GameView = function(game, ctx) {
 
 Fishing.GameView.prototype.start = function () {
   var gameView = this;
-  // var cat = this.game.cat;
-  // gameView.bindKeyHandlers(cat);
+  var cat = this.game.cat;
+  gameView.bindKeyHandlers(cat);
   setInterval(function(){
     gameView.game.addFish(10);
     gameView.game.step();
@@ -17,6 +17,6 @@ Fishing.GameView.prototype.start = function () {
 };
 
 Fishing.GameView.prototype.bindKeyHandlers = function (cat) {
-  window.key('left, a', function() { cat.power([0, -1]); });
-  window.key('right, d',function() { cat.power([0, 1]); });
+  window.key('left, a', function() { cat.power([-1, 0]); });
+  window.key('right, d',function() { cat.power([1, 0]); });
 }

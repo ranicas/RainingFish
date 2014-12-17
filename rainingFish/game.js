@@ -1,12 +1,19 @@
 var Fishing = window.Fishing || {}
 
 Fishing.Game = function () {
-	this.fish = []
+	this.fish = [],
+	this.cat = new Fishing.Cat(Fishing.Game.CAT_POS, this)
 }
 
 Fishing.Game.DIM_X = window.innerWidth;
 
 Fishing.Game.DIM_Y = window.innerHeight;
+
+Fishing.Game.LEFT_BD = Fishing.Cat.WIDTH;
+
+Fishing.Game.RIGHT_BD = Fishing.Game.DIM_X - Fishing.Cat.WIDTH;
+
+Fishing.Game.CAT_POS = [0, Fishing.Game.DIM_Y - 300]
 
 // Fishing.Game.NUM_FISH = 50;
 
@@ -20,7 +27,7 @@ Fishing.Game.prototype.addFish = function (spacer) {
 };
 
 Fishing.Game.prototype.allObjects = function () {
-  return this.fish //.concat([this.cat]);
+  return [this.cat].concat(this.fish);
 };
 
 Fishing.Game.prototype.draw = function (ctx) {
@@ -34,17 +41,18 @@ Fishing.Game.prototype.moveObjects = function() {
   this.allObjects().forEach(function(el) { el.move(); });
 };
 
-//TODO define out of bound to include object so not to disappear
 Fishing.Game.prototype.isOutOfBounds = function (pos) {
 	//only care if y value is above dimY
   if (pos[1] > Fishing.Game.DIM_Y) {
     return true;
+  } else if (pos[0] < 0 || pos[0] > Fishing.Game.RIGHT_BD) { 
+  	return true;
   }
   return false;
 };
 
 Fishing.Game.randomPosition = function() {
-   return Fishing.Util.randomStartPos(Fishing.Game.DIM_X);
+   return [Math.floor(Math.random() * Fishing.Game.RIGHT_BD) + Fishing.Game.LEFT_BD, -50]
 };
 
 Fishing.Game.prototype.remove = function (obj) {

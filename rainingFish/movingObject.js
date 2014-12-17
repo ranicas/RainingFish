@@ -7,6 +7,7 @@ Fishing.MovingObject = function (newMovingObject) {
   this.game = newMovingObject.game
 };
 
+//TODO draw difference sizes of fish doing width, height
 Fishing.MovingObject.prototype.draw = function (ctx) {
   ctx.drawImage(this.img, this.pos[0], this.pos[1])
 
@@ -15,8 +16,10 @@ Fishing.MovingObject.prototype.draw = function (ctx) {
 Fishing.MovingObject.prototype.move = function () {
   newPos = [this.pos[0] + this.vel[0], this.pos[1] + this.vel[1]];
 	// console.log(this.pos[0] + " " + this.vel[0] + ", " + this.pos[1] + " " + this.vel[1])
-  if (this.game.isOutOfBounds(newPos)) {
+  if (this.game.isOutOfBounds(newPos) && !(this instanceof Fishing.Cat)) {
       this.game.remove(this);
+  } else if (this.game.isOutOfBounds(newPos) && (this instanceof Fishing.Cat)) {
+  	// debugger
   } else {
     this.pos = newPos
   }
