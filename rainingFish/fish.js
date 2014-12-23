@@ -15,11 +15,6 @@ Fishing.Util.inherits(Fishing.Fish, Fishing.MovingObject);
 // Fishing.Fish.RADIUS = 5;
 
 Fishing.Fish.prototype.collideWith = function (otherObject) {
-  if (otherObject instanceof Fishing.Ship) {
-    otherObject.relocate();
-  } else if (otherObject instanceof Fishing.Bullet) {
-    game = this.game;
-    game.remove(this);
-    game.remove(otherObject);
-  }
+	this.game.remove(this)
+
 };

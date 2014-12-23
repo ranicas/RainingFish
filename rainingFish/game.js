@@ -30,6 +30,17 @@ Fishing.Game.prototype.allObjects = function () {
   return [this.cat].concat(this.fish);
 };
 
+//only care if things collide with cat, so pop out cat and compare
+Fishing.Game.prototype.checkCollisions = function () {
+  var allObjects = this.allObjects().slice(1) //all obj but cat
+	for(var i = 0; i < allObjects.length; i++) {
+    if (allObjects[i].isCollidedWith(this.cat)) {
+      allObjects[i].collideWith(this.cat);
+    }
+  }
+};
+
+
 Fishing.Game.prototype.draw = function (ctx) {
   ctx.clearRect(0, 0, Fishing.Game.DIM_X, Fishing.Game.DIM_Y);
   this.allObjects().forEach(function (el) {
@@ -65,5 +76,5 @@ Fishing.Game.prototype.remove = function (obj) {
 
 Fishing.Game.prototype.step = function () {
   this.moveObjects();
-  // this.checkCollisions();
+  this.checkCollisions();
 };

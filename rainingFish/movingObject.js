@@ -25,15 +25,23 @@ Fishing.MovingObject.prototype.move = function () {
   }
 };
 
+//Fishing.Game.DIM_Y - 300 is top of y for cat
+//cat is 176 px wide
+// -cat bowl at -100px from top of cat.pos[1]
+//bowl width is 50 from cat.pos[0] to 140 if cat left, 
+// fish is 40px tall, 50px wide
+//
+// fish pos should be cat pos horizontal + 150?
 //TODO redefine this to be more precise
-Fishing.MovingObject.prototype.isCollidedWith = function (otherObject) {
-  var distance = Fishing.Util.distanceBetween(this.pos, otherObject.pos);
-  var radii = this.radius + otherObject.radius;
-  if (distance <= radii) {
-    return true;
-  } else {
-    return false;
-  }
+Fishing.MovingObject.prototype.isCollidedWith = function (cat) {
+	//if fish check if bottom of fish match with the bowl
+	if (this.pos[0] > (cat.pos[0] + 40) && 
+		 (this.pos[0] < (cat.pos[0] + 140)) && 
+		(this.pos[1] >= cat.pos[1] + 80) && 
+		(this.pos[1] <= cat.pos[1] + 120)) {
+		return true
+	}
+	//if brick, check if bottom of brick match with top of cat
 };
 
 Fishing.MovingObject.prototype.collideWith = function (otherObject) {
